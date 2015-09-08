@@ -29,4 +29,5 @@ while(true){
   //close connected socket
   syscalls.close(connfd);
 }
-
+//Four basic syscalls any server makes on unix based os
+//socket bind listen accept 
