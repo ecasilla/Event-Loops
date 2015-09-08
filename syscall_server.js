@@ -13,20 +13,20 @@ syscalls.listen(acceptingFd,100);
 //log that we are ready and listening
 syscalls.write(stdout,"listening on port 3000\n");
 
-//Accepting any incoming socket connections on that port
-var connfd = syscalls.accept(acceptingFd);
+while(true){ 
+  //Accepting any incoming socket connections on that port
+  var connfd = syscalls.accept(acceptingFd);
 
-//log new connection
-syscalls.write(stdout,'accepted new connection\n');
+  //log new connection
+  syscalls.write(stdout,'accepted new connection\n');
 
-//read up to a kb of data
-var socketData = syscalls.read(connfd,1024);
-//log data 
-syscalls.write(stdout,'recevied data ' + socketData + '\n');
-//write to connected socket
-syscalls.write(connfd,'bye\n');
-//close connected socket
-syscalls.close(connfd);
-//close accepting socket
-syscalls.close(acceptingFd);
+  //read up to a kb of data
+  var socketData = syscalls.read(connfd,1024);
+  //log data 
+  syscalls.write(stdout,'recevied data ' + socketData + '\n');
+  //write to connected socket
+  syscalls.write(connfd,'bye\n');
+  //close connected socket
+  syscalls.close(connfd);
+}
 
